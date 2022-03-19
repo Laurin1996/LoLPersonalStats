@@ -11,7 +11,7 @@
     "api:start:prod": "node ./api/dist/src/main",
     "api:test": "jest -c ./api/jest.config.js",
     "api:test:watch": "jest -c ./api/jest.config.js --watch",
-    "frontend:build": "vue-tsc --noEmit && vite build",
+    "frontend:build": "vue-tsc -p ./frontend --noEmit && vite build -c ./frontend/vite.config.ts",
     "frontend:dev": "vite -c ./frontend/vite.config.ts",
     "frontend:preview": "vite preview --port 5050",
     "frontend:test:unit": "vitest -r ./frontend --environment jsdom",
