@@ -2,17 +2,33 @@
   "name": "lolpersonalstats",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite -c ./frontend/vite.config.ts",
-    "build": "vue-tsc --noEmit && vite build",
-    "preview": "vite preview --port 5050",
-    "test:unit": "vitest -r ./frontend --environment jsdom",
-    "typecheck": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
-    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore"
+    "frontend:dev": "vite -c ./frontend/vite.config.ts",
+    "frontend:build": "vue-tsc --noEmit && vite build",
+    "frontend:preview": "vite preview --port 5050",
+    "frontend:test:unit": "vitest -r ./frontend --environment jsdom",
+    "frontend:typecheck": "vue-tsc --noEmit -p tsconfig.vitest.json --composite false",
+    "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "api:prebuild": "rimraf dist",
+    "api:build": "nest build -p ./api/tsconfig.json -c ./api/nest-cli.json",
+    "api:start": "nest start -p ./api/tsconfig.json -c ./api/nest-cli.json",
+    "api:start:dev": "nest start -p ./api/tsconfig.json -c ./api/nest-cli.json --watch",
+    "api:start:debug": "nest start -p ./api/tsconfig.json -c ./api/nest-cli.json --debug --watch",
+    "api:start:prod": "node ./api/dist/src/main",
+    "api:test": "jest -c ./api/jest.config.js",
+    "api:test:watch": "jest -c ./api/jest.config.js --watch",
+    "api:test:cov": "jest -c ./api/jest.config.js --coverage",
+    "api:test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand"
   },
   "dependencies": {
     "pinia": "^2.0.11",
     "vue": "^3.2.31",
-    "vue-router": "^4.0.12"
+    "vue-router": "^4.0.12",
+    "@nestjs/common": "^8.0.0",
+    "@nestjs/core": "^8.0.0",
+    "@nestjs/platform-express": "^8.0.0",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^3.0.2",
+    "rxjs": "^7.2.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.1.0",
@@ -30,6 +46,23 @@
     "typescript": "~4.5.5",
     "vite": "^2.8.4",
     "vitest": "^0.5.0",
-    "vue-tsc": "^0.31.4"
+    "vue-tsc": "^0.31.4",
+    "@nestjs/cli": "^8.0.0",
+    "@nestjs/schematics": "^8.0.0",
+    "@nestjs/testing": "^8.0.0",
+    "@types/express": "^4.17.13",
+    "@types/jest": "27.4.1",
+    "@types/supertest": "^2.0.11",
+    "@typescript-eslint/eslint-plugin": "^5.0.0",
+    "@typescript-eslint/parser": "^5.0.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.2.5",
+    "source-map-support": "^0.5.20",
+    "supertest": "^6.1.3",
+    "ts-jest": "^27.0.3",
+    "ts-loader": "^9.2.3",
+    "ts-node": "^10.0.0",
+    "tsconfig-paths": "^3.10.1"
   }
 }
