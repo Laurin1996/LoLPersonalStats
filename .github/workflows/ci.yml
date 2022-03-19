@@ -22,8 +22,12 @@ jobs:
         run: npm install
       - name: Lint
         run: npm run lint
-      - name: Test
-        run: npm run test:unit
-      - name: Build
-        run: npm run build
+      - name: Test-frontend
+        run: npm run frontend:test:unit
+      - name: Build-frontend
+        run: npm run frontend:build
+      - name: Test-api
+        run: npm run api:test
+      - name: Build-api
+        run: npm run api:build
   
